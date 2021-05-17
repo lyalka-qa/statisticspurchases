@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StatsServiceTest {
     @Test
-    void calculateSum() {
+    void sum() {
         StatsService service = new StatsService();
-        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 180;
+        int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 180;
 
         // вызываем целевой метод:
-        long actual = service.calculateSum(purchases);
+        int actual = service.sum(purchases);
 
         // производим проверку (сравниваем ожидаемый и фактический):
         assertEquals(expected, actual);
@@ -20,13 +20,13 @@ public class StatsServiceTest {
         System.out.println("calculateSum");
     }
     @Test
-    void calculateAverageSum() {
+    void averageSum() {
         StatsService service = new StatsService();
-        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 15;
+        int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 15;
 
         // вызываем целевой метод:
-        long actual = service.calculateAverageSum(purchases);
+        int actual = service.averageSum(purchases);
 
         // производим проверку (сравниваем ожидаемый и фактический):
         assertEquals(expected, actual);
@@ -34,13 +34,13 @@ public class StatsServiceTest {
         System.out.println("calculateAverageSum");
     }
     @Test
-    void findMonthMaxPurchase() {
+    void maxMonthNumber() {
         StatsService service = new StatsService();
-        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 20;
+        int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 8;
 
         // вызываем целевой метод:
-        long actual = service.findMonthMaxPurchase(purchases);
+        int actual = service.maxMonthNumber(purchases);
 
         // производим проверку (сравниваем ожидаемый и фактический):
         assertEquals(expected, actual);
@@ -49,13 +49,13 @@ public class StatsServiceTest {
     }
 
     @Test
-    void findMonthMinPurchase() {
+    void minMonthNumber() {
         StatsService service = new StatsService();
-        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 7;
+        int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 9;
 
         // вызываем целевой метод:
-        long actual = service.findMonthMinPurchase(purchases);
+        int actual = service.minMonthNumber(purchases);
 
         // производим проверку (сравниваем ожидаемый и фактический):
         assertEquals(expected, actual);
@@ -63,5 +63,33 @@ public class StatsServiceTest {
         System.out.println("findMonthMinPurchase");
     }
 
+    @Test
+    void moreThanAverage() {
+        StatsService service = new StatsService();
+        int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 5;
 
+        // вызываем целевой метод:
+        int actual = service.moreThanAverage(purchases);
+
+        // производим проверку (сравниваем ожидаемый и фактический):
+        assertEquals(expected, actual);
+
+        System.out.println("amountOfMonthMoreThanAverage");
+    }
+
+    @Test
+    void lessThanAverage() {
+        StatsService service = new StatsService();
+        int[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 5;
+
+        // вызываем целевой метод:
+        int actual = service.lessThanAverage(purchases);
+
+        // производим проверку (сравниваем ожидаемый и фактический):
+        assertEquals(expected, actual);
+
+        System.out.println("amountOfMonthLessThanAverage");
+    }
 }

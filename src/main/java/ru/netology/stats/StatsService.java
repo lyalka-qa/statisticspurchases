@@ -1,47 +1,70 @@
 package ru.netology.stats;
 
 public class StatsService {
-    public long calculateSum(long[] purchases) {
-        long sum = 0; // начинаем с нуля
-        for (long purchase : purchases) {
-            // аналог sum = sum + purchase
-            // каждый раз прибавляем к текущей сумме новый элемент
+    public int sum(int[] purchases) {
+        int sum = 0;
+        for (int purchase : purchases) {
             sum += purchase;
         }
         return sum;
     }
 
-    public long calculateAverageSum(long[] purchases) {
-        long sum = 0; // начинаем с нуля
-        for (long purchase : purchases) {
-            sum += purchase;
-        }
-        long averagesum = sum / 12;
-        return averagesum;
+    public int averageSum(int[] purchases) {
+        int sum = sum(purchases);
+        return sum / purchases.length;
     }
 
-    public long findMonthMaxPurchase(long[] purchases) {
-        long currentMax = purchases[0];
-        int month = 0;
-        for (long purchase : purchases) {
-            if (currentMax < purchase) {
-                currentMax = purchase;
-                month = month + 1;
+    public int maxMonthNumber(int[] purchases) {
+        int max = purchases[0];
+        for (int purchase : purchases) {
+            if (purchase > max) {
+               max = purchase;
             }
         }
-        return currentMax;
+        int monthCount = 0;
+        int maxMonthNumber = 0;
+        for (int purchase : purchases) {
+            monthCount++;
+            if (purchase == max) {
+                maxMonthNumber = monthCount;
+            }
+    }
+        return maxMonthNumber;
     }
 
-    public long findMonthMinPurchase(long[] purchases) {
-        long currentMin = purchases[0];
+    public int minMonthNumber(int[] purchases) {
+        int min = purchases[0];
         int month = 0;
-        for (long purchase : purchases) {
-            if (currentMin > purchase) {
-                currentMin = purchase;
-                month = month + 1;
+        int minMonthNumber = 0;
+        for (int purchase : purchases) {
+            month = month + 1;
+            if (min > purchase) {
+                min = purchase;
+                minMonthNumber = month;
             }
         }
-        return currentMin;
+        return minMonthNumber;
     }
 
+    public int moreThanAverage (int[] purchases) {
+        int averageSum = averageSum(purchases);
+        int monthCount = 0;
+        for (int purchase : purchases) {
+            if (purchase > averageSum) {
+                monthCount++;
+            }
+        }
+        return monthCount;
+    }
+
+    public int lessThanAverage (int[] purchases) {
+        int averageSum = averageSum(purchases);
+        int monthCount = 0;
+        for (int purchase : purchases) {
+            if (purchase < averageSum) {
+                monthCount++;
+            }
+        }
+        return monthCount;
+    }
 }
